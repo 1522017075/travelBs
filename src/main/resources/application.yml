@@ -1,0 +1,32 @@
+Server:
+  port: 8888
+  servlet:
+    context-path: /bs
+Spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.105.72.22/travelbssql?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: cenjinde158...
+  mail:
+    host: smtp.qq.com
+    username: 1522017075@qq.com
+    password: guffztnwbwnngdfd
+    default-encoding: UTF-8
+#    port: 587
+#    #配置阿里云服务器发送邮件
+#    properties:
+#      mail:
+#        smtp:
+#          ssl:
+#            trust: smtp.exmail.qq.com
+#          socketFactory:
+#            class: javax.net.ssl.SSLSocketFactory
+#            port: 587
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+mybatis:
+  classpath: com/fanjie/travel/mapper/*Mapper.xml
