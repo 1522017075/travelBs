@@ -9,6 +9,7 @@ import java.util.List;
 public interface UserService {
 
     List<UserDTO> selectByPhone(UserVO vo);
+    List<UserDTO> selectByPhoneAndPass(UserVO vo);
 
     int deleteByPrimaryKey(Integer id);
     int insert(UserVO vo);

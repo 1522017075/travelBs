@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDTO> selectByPhoneAndPass(UserVO vo) {
+        List<UserDTO> userDTOS = travelUserMapper.selectByPhoneAndPass(vo);
+        return userDTOS;
+    }
+
+    @Override
     public int deleteByPrimaryKey(Integer id) {
         return 0;
     }

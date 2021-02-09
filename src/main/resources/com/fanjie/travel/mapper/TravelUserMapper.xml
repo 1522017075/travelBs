@@ -58,6 +58,11 @@
     select id, phone, password, gender, age, mail, profile, head
     from travel_user
     where phone = #{phone,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPhoneAndPass" parameterType="com.fanjie.travel.model.vo.UserVO" resultType="com.fanjie.travel.model.dto.UserDTO">
+    select id, phone, password, gender, age, mail, profile, head
+    from travel_user
+    where phone = #{phone,jdbcType=VARCHAR}
     and password = #{password,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">

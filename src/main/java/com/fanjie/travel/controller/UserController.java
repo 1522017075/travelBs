@@ -25,7 +25,7 @@ public class UserController {
     @CrossOrigin
     @RequestMapping("/checkUser")
     public String list(@RequestBody UserVO vo) {
-        List<UserDTO> userDTO = userService.selectByPhone(vo);
+        List<UserDTO> userDTO = userService.selectByPhoneAndPass(vo);
         Result result = new Result();
         if (CollectionUtils.isEmpty(userDTO)) {
             result.setCode(404);
