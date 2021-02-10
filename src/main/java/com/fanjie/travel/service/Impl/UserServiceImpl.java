@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int updateByPrimaryKey(UserVO vo) {
-        return 0;
+        return travelUserMapper.updateByPrimaryKey(vo);
     }
 
     @Override

@@ -14,8 +14,12 @@ Spring:
     username: 1522017075@qq.com
     password: guffztnwbwnngdfd
     default-encoding: UTF-8
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/
 #    port: 587
-#    #ÅäÖÃ°¢ÀïÔÆ·şÎñÆ÷·¢ËÍÓÊ¼ş
+#    #ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½
 #    properties:
 #      mail:
 #        smtp:
