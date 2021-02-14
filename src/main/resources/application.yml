@@ -18,6 +18,10 @@ Spring:
     static-path-pattern: /**
   resources:
     static-locations: classpath:/
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
 #    port: 587
 #    #���ð����Ʒ����������ʼ�
 #    properties:
