@@ -23,13 +23,15 @@ public interface ReserveMapper {
 
     List<ReserveDTO> selectByExample(ReserveExample example);
 
+    List<ReserveDTO> selectByPhone(String phone);
+
     Reserve selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Reserve record, @Param("example") ReserveExample example);
 
     int updateByExample(@Param("record") Reserve record, @Param("example") ReserveExample example);
 
-    int updateByPrimaryKeySelective(Reserve record);
+    int updateByPrimaryKeySelective(ReserveVO vo);
 
     int updateByPrimaryKey(Reserve record);
 }

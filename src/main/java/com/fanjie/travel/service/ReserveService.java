@@ -10,4 +10,8 @@ public interface ReserveService {
     int insert(ReserveVO vo);
 
     List<ReserveDTO> myReserve(ReserveVO vo);
+
+    int updateByPrimaryKeySelective(ReserveVO vo);
+
+    int deleteByPrimaryKey(Integer id);
 }

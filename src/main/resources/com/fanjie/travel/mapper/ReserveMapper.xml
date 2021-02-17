@@ -83,12 +83,25 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPhone" parameterType="java.lang.String" resultType="com.fanjie.travel.model.dto.ReserveDTO">
     select
-    <include refid="Base_Column_List" />
-    from reserve
-    where id = #{id,jdbcType=INTEGER}
+    r.id as id,
+    r.phone as phone,
+    r.num as num,
+    r.bookdate as bookdate,
+    r.sceneid as sceneid,
+    s.name as scenename
+    from reserve r left join scene s
+    on sceneid = s.id
+    and phone = #{phone,jdbcType=VARCHAR}
+    ORDER BY r.bookdate desc , r.sceneid
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+  from reserve
+  where id = #{id,jdbcType=INTEGER}
+</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from reserve
     where id = #{id,jdbcType=INTEGER}
@@ -101,9 +114,9 @@
   </delete>
   <insert id="insert" parameterType="com.fanjie.travel.model.vo.ReserveVO">
     insert into reserve (phone, num,
-      bookdate)
+      bookdate, sceneid)
     values (#{phone,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER},
-      #{bookdate,jdbcType=VARCHAR})
+      #{bookdate,jdbcType=VARCHAR}, 0)
   </insert>
   <insert id="insertSelective" parameterType="com.fanjie.travel.model.po.Reserve">
     insert into reserve
@@ -182,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanjie.travel.model.po.Reserve">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanjie.travel.model.vo.ReserveVO">
     update reserve
     <set>
       <if test="phone != null">

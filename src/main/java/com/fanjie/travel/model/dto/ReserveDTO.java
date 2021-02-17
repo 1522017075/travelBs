@@ -13,4 +13,8 @@ public class ReserveDTO {
     private String bookdate;
 
     private Integer sceneid;
+
+    private String scenename;
+
+    private int isOut;
 }

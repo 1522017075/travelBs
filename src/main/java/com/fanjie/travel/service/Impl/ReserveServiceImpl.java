@@ -23,9 +23,16 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public List<ReserveDTO> myReserve(ReserveVO vo) {
-        ReserveExample reserveExample = new ReserveExample();
-        ReserveExample.Criteria criteria = reserveExample.createCriteria();
-        criteria.andPhoneEqualTo(vo.getPhone());
-        return reserveMapper.selectByExample(reserveExample);
+        return reserveMapper.selectByPhone(vo.getPhone());
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(ReserveVO vo) {
+        return reserveMapper.updateByPrimaryKeySelective(vo);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return reserveMapper.deleteByPrimaryKey(id);
     }
 }

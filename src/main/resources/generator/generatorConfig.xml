@@ -23,6 +23,6 @@
         <!--  <table tableName="sf_pv_cost_hec_mapping">
               <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
           </table>-->
-        <table tableName="reserve" domainObjectName="Reserve"></table>
+        <table tableName="scene" domainObjectName="Scene"></table>
     </context>
 </generatorConfiguration>
