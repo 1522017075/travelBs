@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.fanjie.travel.model.dto.UserDTO;
 import com.fanjie.travel.model.result.Result;
 import com.fanjie.travel.model.vo.UserVO;
+import com.fanjie.travel.service.UpLoadService;
 import com.fanjie.travel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ClassUtils;
@@ -26,6 +27,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UpLoadService upLoadService;
 
     @CrossOrigin
     @RequestMapping("/checkUser")
@@ -89,31 +92,6 @@ public class UserController {
     @CrossOrigin
     @RequestMapping("/up")
     public String up(MultipartFile file) throws Exception {
-
-        // 随机生成6位字符
-        String base = "abcdefghijklmnopqrstuvwxyz0123456789";
-        Random random = new Random();
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < 6; i++) {
-            int number = random.nextInt(base.length());
-            sb.append(base.charAt(number));
-        }
-
-        // 文件地址名
-        String staticPath = ClassUtils.getDefaultClassLoader().getResource("static").getPath();
-        File imageFolder = new File(staticPath);
-        File f = new File(imageFolder, sb.toString() + file.getOriginalFilename()
-                .substring(file.getOriginalFilename().length() - 4));
-        if (!f.getParentFile().exists())
-        f.getParentFile().mkdirs();
-
-        try {
-            file.transferTo(f);
-            String imgURL = "http://localhost:8888/bs/static/" + f.getName();
-            return imgURL;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";
-        }
+        return upLoadService.upLoadImg(file);
     }
 }
