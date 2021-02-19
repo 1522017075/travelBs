@@ -53,6 +53,20 @@ public class ReserveController {
     }
 
     @CrossOrigin
+    @RequestMapping("/selectReserve")
+    public String selectReserve(@RequestBody ReserveVO vo){
+        List<ReserveDTO> reserveDTOS = orderService.selectAllBySelect(vo.getPhone());
+        Result result = new Result();
+        if(CollectionUtils.isEmpty(reserveDTOS)){
+            result.setCode(404);
+        } else {
+            result.setData(reserveDTOS);
+            result.setCode(200);
+        }
+        return JSON.toJSONString(result);
+    }
+
+    @CrossOrigin
     @RequestMapping("/update")
     public String update(@RequestBody ReserveVO vo){
         int insert = orderService.updateByPrimaryKeySelective(vo);
@@ -76,6 +90,20 @@ public class ReserveController {
             result.setCode(200);
         } else {
             result.setCode(404);
+        }
+        return JSON.toJSONString(result);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/list")
+    public String getList(@RequestBody ReserveVO vo){
+        List<ReserveDTO> reserveDTOS = orderService.selectAll();
+        Result result = new Result();
+        if(CollectionUtils.isEmpty(reserveDTOS)){
+            result.setCode(404);
+        } else {
+            result.setData(reserveDTOS);
+            result.setCode(200);
         }
         return JSON.toJSONString(result);
     }

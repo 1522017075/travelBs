@@ -13,7 +13,10 @@ public interface UserService {
 
     int deleteByPrimaryKey(Integer id);
     int insert(UserVO vo);
-    List<TravelUser> selectAll();
     int updateByPrimaryKey(UserVO vo);
     int getCode(UserVO vo);
+
+    List<UserDTO> selectAll();
+
+    List<UserDTO> selectAllBySelect(String str);
 }

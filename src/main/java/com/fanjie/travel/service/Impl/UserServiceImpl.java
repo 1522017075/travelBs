@@ -2,7 +2,6 @@ package com.fanjie.travel.service.Impl;
 
 import com.fanjie.travel.mapper.TravelUserMapper;
 import com.fanjie.travel.model.dto.UserDTO;
-import com.fanjie.travel.model.po.TravelUser;
 import com.fanjie.travel.model.vo.UserVO;
 import com.fanjie.travel.service.MailService;
 import com.fanjie.travel.service.UserService;
@@ -43,8 +42,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<TravelUser> selectAll() {
-        return null;
+    public List<UserDTO> selectAll() {
+        return travelUserMapper.selectAll();
+    }
+
+    @Override
+    public List<UserDTO> selectAllBySelect(String str) {
+        return travelUserMapper.selectAllBySelect(str);
     }
 
     @Override

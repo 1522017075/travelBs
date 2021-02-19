@@ -102,12 +102,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fanjie.travel.model.po.Scene">
-    insert into scene (id, name, scenedate,
+  <insert id="insert" parameterType="com.fanjie.travel.model.vo.SceneVO">
+    insert into scene (name, scenedate,
       author, description, scenelike,
       cover, video)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{scenedate,jdbcType=VARCHAR},
-      #{author,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{scenelike,jdbcType=INTEGER},
+    values (#{name,jdbcType=VARCHAR}, #{scenedate,jdbcType=VARCHAR},
+      #{author,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 0,
       #{cover,jdbcType=VARCHAR}, #{video,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fanjie.travel.model.po.Scene">
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fanjie.travel.model.po.Scene">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanjie.travel.model.vo.SceneVO">
     update scene
     <set>
       <if test="name != null">

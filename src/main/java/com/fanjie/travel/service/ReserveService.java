@@ -14,4 +14,8 @@ public interface ReserveService {
     int updateByPrimaryKeySelective(ReserveVO vo);
 
     int deleteByPrimaryKey(Integer id);
+
+    List<ReserveDTO> selectAll();
+
+    List<ReserveDTO> selectAllBySelect(String phone);
 }

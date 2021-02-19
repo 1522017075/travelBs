@@ -25,6 +25,10 @@ public interface ReserveMapper {
 
     List<ReserveDTO> selectByPhone(String phone);
 
+    List<ReserveDTO> selectAll();
+
+    List<ReserveDTO> selectAllBySelect(String phone);
+
     Reserve selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Reserve record, @Param("example") ReserveExample example);

@@ -72,6 +72,18 @@ public class UserController {
         }
         return JSON.toJSONString(result);
     }
+    @CrossOrigin
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestBody UserVO vo) {
+        int delete = userService.deleteByPrimaryKey(vo.getId());
+        Result result = new Result();
+        if (delete == 1) {
+            result.setCode(200);
+        } else {
+            result.setCode(404);
+        }
+        return JSON.toJSONString(result);
+    }
 
     @CrossOrigin
     @RequestMapping("/getCode")
@@ -93,5 +105,33 @@ public class UserController {
     @RequestMapping("/up")
     public String up(MultipartFile file) throws Exception {
         return upLoadService.upLoadImg(file);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/list")
+    public String getList(@RequestBody UserVO vo) {
+        List<UserDTO> userDTOS = userService.selectAll();
+        Result result = new Result();
+        if (CollectionUtils.isEmpty(userDTOS)) {
+            result.setCode(404);
+        } else {
+            result.setCode(200);
+        }
+        result.setData(userDTOS);
+        return JSON.toJSONString(result);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/getUser")
+    public String getUser(@RequestBody UserVO vo) {
+        List<UserDTO> userDTOS = userService.selectAllBySelect(vo.getPhone());
+        Result result = new Result();
+        if (CollectionUtils.isEmpty(userDTOS)) {
+            result.setCode(404);
+        } else {
+            result.setCode(200);
+        }
+        result.setData(userDTOS);
+        return JSON.toJSONString(result);
     }
 }

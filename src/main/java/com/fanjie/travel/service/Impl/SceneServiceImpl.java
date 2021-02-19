@@ -27,7 +27,22 @@ public class SceneServiceImpl implements SceneService {
     }
 
     @Override
+    public int updateByPrimaryKey(SceneVO vo) {
+        return sceneMapper.updateByPrimaryKeySelective(vo);
+    }
+
+    @Override
     public List<SceneDTO> selectByPrimaryKey(Integer id) {
         return sceneMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int insert(SceneVO vo) {
+        return sceneMapper.insert(vo);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return sceneMapper.deleteByPrimaryKey(id);
     }
 }

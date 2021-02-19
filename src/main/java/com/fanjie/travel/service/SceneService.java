@@ -11,5 +11,11 @@ public interface SceneService {
 
     int updateSceneLikeByPrimaryKey(SceneVO vo);
 
+    int updateByPrimaryKey(SceneVO vo);
+
     List<SceneDTO> selectByPrimaryKey(Integer id);
+
+    int insert(SceneVO vo);
+
+    int deleteByPrimaryKey(Integer id);
 }

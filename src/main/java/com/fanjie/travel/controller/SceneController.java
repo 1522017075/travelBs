@@ -2,6 +2,7 @@ package com.fanjie.travel.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.fanjie.travel.model.dto.SceneDTO;
+import com.fanjie.travel.model.po.Scene;
 import com.fanjie.travel.model.result.Result;
 import com.fanjie.travel.model.vo.SceneVO;
 import com.fanjie.travel.service.SceneService;
@@ -36,7 +37,7 @@ public class SceneController {
     }
 
     @CrossOrigin
-    @RequestMapping("recommend")
+    @RequestMapping("/recommend")
     public String recommend(SceneVO vo){
         int update = sceneService.updateSceneLikeByPrimaryKey(vo);
         Result result = new Result();
@@ -48,7 +49,7 @@ public class SceneController {
         return JSON.toJSONString(result);
     }
     @CrossOrigin
-    @RequestMapping("getScene")
+    @RequestMapping("/getScene")
     public String getScene(@RequestBody SceneVO vo){
         List<SceneDTO> sceneDTOS = sceneService.selectByPrimaryKey(vo.getId());
         Result result = new Result();
@@ -57,6 +58,38 @@ public class SceneController {
         } else {
             result.setData(sceneDTOS);
             result.setCode(200);
+        }
+        return JSON.toJSONString(result);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/insertOrUpdate")
+    public String insertScene(@RequestBody SceneVO vo) {
+        Integer id = vo.getId();
+        int op = 0;
+        if(id != 0 && id != null){ // update
+            op = sceneService.updateByPrimaryKey(vo);
+        } else {
+            op = sceneService.insert(vo);
+        }
+        Result result = new Result();
+        if(op == 1){
+            result.setCode(200);
+        } else {
+            result.setCode(404);
+        }
+        return JSON.toJSONString(result);
+    }
+
+    @CrossOrigin
+    @RequestMapping("/deleteScene")
+    public String deleteScene(SceneVO vo){
+        int delete = sceneService.deleteByPrimaryKey(vo.getId());
+        Result result = new Result();
+        if(delete == 1){
+            result.setCode(200);
+        } else {
+            result.setCode(404);
         }
         return JSON.toJSONString(result);
     }

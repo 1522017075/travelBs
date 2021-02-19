@@ -17,7 +17,7 @@ public interface SceneMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Scene record);
+    int insert(SceneVO vo);
 
     int insertSelective(Scene record);
 
@@ -29,7 +29,7 @@ public interface SceneMapper {
 
     int updateByExample(@Param("record") Scene record, @Param("example") SceneExample example);
 
-    int updateByPrimaryKeySelective(Scene record);
+    int updateByPrimaryKeySelective(SceneVO vo);
 
     int updateSceneLikeByPrimaryKey(SceneVO vo);
 }

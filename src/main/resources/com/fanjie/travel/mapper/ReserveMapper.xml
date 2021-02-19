@@ -102,6 +102,20 @@
   from reserve
   where id = #{id,jdbcType=INTEGER}
 </select>
+
+  <select id="selectAll" resultType="com.fanjie.travel.model.dto.ReserveDTO">
+    select
+    <include refid="Base_Column_List" />
+    from reserve
+  </select>
+
+  <select id="selectAllBySelect" parameterType="java.lang.String" resultType="com.fanjie.travel.model.dto.ReserveDTO">
+    select
+    <include refid="Base_Column_List" />
+    from reserve
+    where phone like concat(concat('%',#{phone}),'%')
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from reserve
     where id = #{id,jdbcType=INTEGER}

@@ -35,4 +35,14 @@ public class ReserveServiceImpl implements ReserveService {
     public int deleteByPrimaryKey(Integer id) {
         return reserveMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<ReserveDTO> selectAll() {
+        return reserveMapper.selectAll();
+    }
+
+    @Override
+    public List<ReserveDTO> selectAllBySelect(String phone) {
+        return reserveMapper.selectAllBySelect(phone);
+    }
 }
